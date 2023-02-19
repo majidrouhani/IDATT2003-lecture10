@@ -1,7 +1,8 @@
-package edu.ntnu.idatt2001.mvc.student.view;
+package edu.ntnu.idatt2001.mvc.student;
 
 import edu.ntnu.idatt2001.mvc.student.controller.StudentController;
 import edu.ntnu.idatt2001.mvc.student.model.StudentModel;
+import edu.ntnu.idatt2001.mvc.student.view.StudentView;
 
 public class App {
 
