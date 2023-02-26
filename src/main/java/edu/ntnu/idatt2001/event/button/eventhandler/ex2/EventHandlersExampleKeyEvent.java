@@ -86,7 +86,7 @@ public class EventHandlersExampleKeyEvent extends Application {
     textField.setLayoutY(100);
 
     // Handling the key typed event
-    EventHandler<KeyEvent> eventHandlerTextField = new EventHandler<KeyEvent>() {
+    EventHandler<KeyEvent> eventHandlerTextField = new EventHandler<>() {
       @Override
       public void handle(KeyEvent event) {
         // Playing the animation

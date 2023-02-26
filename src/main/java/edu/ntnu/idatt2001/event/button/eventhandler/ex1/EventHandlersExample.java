@@ -85,7 +85,7 @@ public class EventHandlersExample extends Application {
     textField.setLayoutY(100);
 
     // Handling the key typed event
-    EventHandler<KeyEvent> eventHandlerTextField = new EventHandler<KeyEvent>() {
+    EventHandler<KeyEvent> eventHandlerTextField = new EventHandler<>() {
       @Override
       public void handle(KeyEvent event) {
         // Playing the animation
@@ -96,7 +96,7 @@ public class EventHandlersExample extends Application {
     textField.addEventHandler(KeyEvent.KEY_TYPED, eventHandlerTextField);
 
     // Handling the mouse clicked event(on box)
-    EventHandler<javafx.scene.input.MouseEvent> eventHandlerBox = new EventHandler<javafx.scene.input.MouseEvent>() {
+    EventHandler<javafx.scene.input.MouseEvent> eventHandlerBox = new EventHandler<>() {
 
       @Override
       public void handle(javafx.scene.input.MouseEvent e) {
