@@ -1,8 +1,8 @@
-package edu.ntnu.idatt2001.mvc.student.controller;
+package edu.ntnu.idatt2001.mvc.students.controller;
 
-import edu.ntnu.idatt2001.mvc.student.model.Student;
-import edu.ntnu.idatt2001.mvc.student.model.StudentModel;
-import edu.ntnu.idatt2001.mvc.student.view.StudentView;
+import edu.ntnu.idatt2001.lectures.example1.composition.Student;
+import edu.ntnu.idatt2001.mvc.students.model.StudentModel;
+import edu.ntnu.idatt2001.mvc.students.view.StudentView;
 
 public class StudentController {
   private StudentView studentView;
@@ -24,8 +24,8 @@ public class StudentController {
     this.studentView = studentView;
   }
 
-  public void updateModel(Student studentModel) {
-    System.out.println(studentModel.toString());
+  public void updateModel(Student student) {
+    this.studentModel.addStudent(student);
   }
 
   public void updateView() {

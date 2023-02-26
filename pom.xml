@@ -20,6 +20,11 @@
             <artifactId>javafx-controls</artifactId>
             <version>20-ea+9</version>
         </dependency>
+        <dependency>      
+        <groupId>edu.ntnu.idatt2001.lectures</groupId>
+        <artifactId>lecture1</artifactId>
+        <version>1.0</version>
+        </dependency>
     </dependencies>
 
     <build>

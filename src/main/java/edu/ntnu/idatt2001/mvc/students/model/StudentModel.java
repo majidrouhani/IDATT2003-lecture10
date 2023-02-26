@@ -1,6 +1,9 @@
-package edu.ntnu.idatt2001.mvc.student.model;
+package edu.ntnu.idatt2001.mvc.students.model;
 
 import java.util.List;
+
+import edu.ntnu.idatt2001.lectures.example1.composition.AppData;
+import edu.ntnu.idatt2001.lectures.example1.composition.Student;
 
 public class StudentModel {
 
