@@ -3,7 +3,7 @@
  * Run argument: --module-path "C:\git\javafx\javafx-sdk-11.0.2\lib" --add-modules javafx.controls,javafx.fxml
  */
 
-package edu.ntnu.idatt2001.event.button.capture.ex1;
+package edu.ntnu.idatt2001.event.button.multipleevents.ex1;
 
 import javafx.application.Application;
 import javafx.event.EventHandler;

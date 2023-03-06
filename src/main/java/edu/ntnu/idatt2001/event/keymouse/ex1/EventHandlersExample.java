@@ -1,5 +1,5 @@
 //https://www.tutorialspoint.com/javafx/javafx_event_handling.htm
-package edu.ntnu.idatt2001.event.button.eventhandler.ex2;
+package edu.ntnu.idatt2001.event.keymouse.ex1;
 
 import javafx.animation.RotateTransition;
 import javafx.application.Application;
@@ -8,7 +8,6 @@ import javafx.scene.Group;
 import javafx.scene.PerspectiveCamera;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
@@ -20,13 +19,11 @@ import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class EventHandlersExampleKeyEvent extends Application {
-  int rotation = 360;
+public class EventHandlersExample extends Application {
 
   @Override
   public void start(Stage stage) {
     // Drawing a Box
-
     Box box = new Box();
 
     // Setting the properties of the Box
@@ -71,6 +68,8 @@ public class EventHandlersExampleKeyEvent extends Application {
     // Setting the axis of the rotation
     rotateTransition.setAxis(Rotate.Y_AXIS);
 
+    // Setting the angle of the rotation
+    rotateTransition.setByAngle(360);
 
     // Setting the cycle count for the transition
     rotateTransition.setCycleCount(50);
@@ -90,24 +89,22 @@ public class EventHandlersExampleKeyEvent extends Application {
       @Override
       public void handle(KeyEvent event) {
         // Playing the animation
-        if (event.getCode() == KeyCode.LEFT) {
-          rotateTransition.stop();
-          rotation = Math.abs(rotation);
-          rotateTransition.setByAngle(rotation);
-          rotateTransition.play();
-        } else if (event.getCode() == KeyCode.RIGHT) {
-          rotateTransition.stop();
-          rotation = -Math.abs(rotation);
-          rotateTransition.setByAngle(rotation);
-          rotateTransition.play();
-        } else if (event.getCode() == KeyCode.Q) {
-          System.out.println("Programmet avsluttes...");
-        }
+        rotateTransition.play();
       }
     };
     // Adding an event handler to the text field
-    // textField.addEventHandler(KeyEvent.KEY_TYPED, eventHandlerTextField);
-    textField.setOnKeyPressed(eventHandlerTextField);
+    textField.addEventHandler(KeyEvent.KEY_TYPED, eventHandlerTextField);
+
+    // Handling the mouse clicked event(on box)
+    EventHandler<javafx.scene.input.MouseEvent> eventHandlerBox = new EventHandler<>() {
+
+      @Override
+      public void handle(javafx.scene.input.MouseEvent e) {
+        rotateTransition.stop();
+      }
+    };
+    // Adding the event handler to the box
+    box.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, eventHandlerBox);
 
     // Creating a Group object
     Group root = new Group(box, textField, text);
