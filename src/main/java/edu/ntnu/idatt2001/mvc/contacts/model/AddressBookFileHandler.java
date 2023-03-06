@@ -161,8 +161,10 @@ public class AddressBookFileHandler {
       ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
       return (AddressBook) objectInputStream.readObject();
     } catch (IOException | ClassNotFoundException e) {
-      logger.log(Level.INFO, "Could not open file "
-          + inFile.getName() + ". An empty AddressBook was returned.");
+
+      String msg = String.format("Could not open file %s An empty AddressBook was returned.",inFile.getName());
+
+      logger.log(Level.WARNING, msg);
       return new AddressBook();
     }
   }

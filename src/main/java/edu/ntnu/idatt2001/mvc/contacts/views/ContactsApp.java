@@ -35,7 +35,7 @@ import javafx.stage.Stage;
  */
 public class ContactsApp extends Application {
 
-  private static final String VERSION = "0.3.1";
+  private static final String VERSION = "0.3.2";
 
   private MainController mainController;
   private AddressBook addressBook;
@@ -91,7 +91,7 @@ public class ContactsApp extends Application {
     root.setCenter(this.contactDetailsTableView);
 
     // Create the scene, adding the rootNode and setting the default size
-    Scene scene = new Scene(root, 600, 500);
+    Scene scene = new Scene(root, 500, 500);
 
     // Set title of the stage (window) and add the scene
     primaryStage.setTitle("Contacts v" + VERSION);
@@ -115,6 +115,15 @@ public class ContactsApp extends Application {
     System.exit(0);
   }
 
+    private TableColumn<Contact, String> createContactColumn(String colName, String propertyName, double minWidth) {
+      // Define the columns
+      // The Name-column
+      TableColumn<Contact, String> col = new TableColumn<>(colName);
+      col.setMinWidth(minWidth);
+      col.setCellValueFactory(new PropertyValueFactory<>(propertyName));
+      return col;
+  }
+
   /**
    * Build the content of the centre of the main window. This part of the GUI
    * displays a Table of all the contacts in the address book as a table.
@@ -123,28 +132,13 @@ public class ContactsApp extends Application {
    */
   private TableView<Contact> createCentreContent() {
 
-    // Create the Table to display all the literature in
-
-    // Define the columns
-    // The Name-column
-    TableColumn<Contact, String> nameColumn = new TableColumn<>("Name");
-    nameColumn.setMinWidth(200);
-    nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-
-    // The Address-column
-    TableColumn<Contact, String> addressColumn = new TableColumn<>("Address");
-    addressColumn.setMinWidth(200);
-    addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
-
-    // The Phone-column
-    TableColumn<Contact, String> phoneColumn = new TableColumn<>("Phone");
-    phoneColumn.setMinWidth(200);
-    phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phone"));
-
     // Create the TableView instance
     TableView<Contact> tableView = new TableView<>();
+    tableView.getColumns().add(createContactColumn("Name","name", 150));
+    tableView.getColumns().add(createContactColumn("Address","address", 250));
+    tableView.getColumns().add(createContactColumn("Phone","phone", 100));
+
     tableView.setItems(this.getAddressBookListWrapper());
-    tableView.getColumns().addAll(nameColumn, addressColumn, phoneColumn);
 
     // Add listener for double click on row
     tableView.setOnMousePressed(mouseEvent -> {
